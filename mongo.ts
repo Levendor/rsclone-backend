@@ -11,8 +11,13 @@ const MONGO_HOST = 'yoda-stories.tat9z.mongodb.net';
 
 const url = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}/?retryWrites=true&w=majority`;
 
-const dbName = 'test';
-const collectionName = 'test';
+const dbName: string = 'test';
+
+const changeCollection = (collection: string): void => {
+  collectionName = collection;
+}
+
+let collectionName: string = 'test';
 
 const getMongoInstance = async () => {
   const client = await MongoClient.connect(url);
@@ -67,5 +72,6 @@ export {
   getById,
   create,
   update,
-  remove
+  remove,
+  changeCollection,
 }
