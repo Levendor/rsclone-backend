@@ -1,13 +1,7 @@
 import { Collection, MongoClient } from 'mongodb';
-// import { ItemType } from '../types/item';
+require('dotenv').config();
 
-const MONGO_USERNAME = 'levendor';
-const MONGO_PASSWORD = 'rsschool';
-const MONGO_HOST = 'yoda-stories.tat9z.mongodb.net';
-
-// const url = 'mongodb+srv://levendor:rsschool@yoda-stories.tat9z.mongodb.net/?retryWrites=true&w=majority';
-
-// const { MONGO_USERNAME, MONGO_PASSWORD, MONGO_HOST } = process.env;
+const { MONGO_USERNAME, MONGO_PASSWORD, MONGO_HOST } = process.env;
 
 const url = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}/?retryWrites=true&w=majority`;
 

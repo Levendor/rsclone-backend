@@ -4,14 +4,14 @@ import * as storage from './mongo';
 const router = Router();
 
 router.get('/:collection/', async (req, res, next) => {
-  await storage.changeCollection(req.params.collection);
+  storage.changeCollection(req.params.collection);
   const list = await storage.listAll();
 
   res.json(list);
 });
 
 router.get('/:collection/:id', async (req, res, next) => {
-  await storage.changeCollection(req.params.collection);
+  storage.changeCollection(req.params.collection);
   const item =  await storage.getById(req.params.id);
 
   res
@@ -22,7 +22,7 @@ router.get('/:collection/:id', async (req, res, next) => {
 });
 
 router.post('/:collection/', async (req, res, next) => {
-  await storage.changeCollection(req.params.collection);
+  storage.changeCollection(req.params.collection);
   const id = req.body.id;
 
   const { body } = req;
@@ -35,7 +35,7 @@ router.post('/:collection/', async (req, res, next) => {
 });
 
 router.put('/:collection/:id', async (req, res, next) => {
-  await storage.changeCollection(req.params.collection);
+  storage.changeCollection(req.params.collection);
   const { body } = req;
 
   const newBody = await storage.update({
@@ -47,7 +47,7 @@ router.put('/:collection/:id', async (req, res, next) => {
 });
 
 router.delete('/:collection/:id', async(req, res, next) => {
-  await storage.changeCollection(req.params.collection);
+  storage.changeCollection(req.params.collection);
   await storage.remove(req.params.id);
 
   res
