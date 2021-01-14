@@ -2,6 +2,9 @@
   "name": "rsclone-backend",
   "version": "1.0.0",
   "description": "Back-end repo for Mongo",
+  "engines": {
+    "node": "15.x"
+  }
   "main": "index.js",
   "scripts": {
     "start": "node dist/server.js",
