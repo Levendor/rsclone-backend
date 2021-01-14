@@ -4,10 +4,9 @@
   "description": "Back-end repo for Mongo",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/sever.js",
+    "start": "node dist/server.js",
     "build": "tsc",
     "dev": "nodemon server.ts",
-    "test": "node test.ts"
   },
   "repository": {
     "type": "git",

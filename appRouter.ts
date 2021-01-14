@@ -2,17 +2,16 @@ import { Router } from 'express';
 import * as storage from './mongo';
 
 const router = Router();
-const COLLECTION_NAME = 'maps';
 
-router.get('/', async (req, res, next) => {
-  await storage.changeCollection(COLLECTION_NAME);
+router.get('/:collection/', async (req, res, next) => {
+  await storage.changeCollection(req.params.collection);
   const list = await storage.listAll();
 
   res.json(list);
 });
 
-router.get('/:id', async (req, res, next) => {
-  await storage.changeCollection(COLLECTION_NAME);
+router.get('/:collection/:id', async (req, res, next) => {
+  await storage.changeCollection(req.params.collection);
   const item =  await storage.getById(req.params.id);
 
   res
@@ -22,8 +21,8 @@ router.get('/:id', async (req, res, next) => {
     });
 });
 
-router.post('/', async (req, res, next) => {
-  await storage.changeCollection(COLLECTION_NAME);
+router.post('/:collection/', async (req, res, next) => {
+  await storage.changeCollection(req.params.collection);
   const id = req.body.id;
 
   const { body } = req;
@@ -35,8 +34,8 @@ router.post('/', async (req, res, next) => {
   res.json(newBody);
 });
 
-router.put('/:id', async (req, res, next) => {
-  await storage.changeCollection(COLLECTION_NAME);
+router.put('/:collection/:id', async (req, res, next) => {
+  await storage.changeCollection(req.params.collection);
   const { body } = req;
 
   const newBody = await storage.update({
@@ -47,8 +46,8 @@ router.put('/:id', async (req, res, next) => {
   res.json(newBody);
 });
 
-router.delete('/:id', async(req, res, next) => {
-  await storage.changeCollection(COLLECTION_NAME);
+router.delete('/:collection/:id', async(req, res, next) => {
+  await storage.changeCollection(req.params.collection);
   await storage.remove(req.params.id);
 
   res
