@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "tsc",
-    "dev": "nodemon server.ts"
+    "dev": "nodemon server.ts",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
