@@ -5,13 +5,13 @@ const { MONGO_USERNAME, MONGO_PASSWORD, MONGO_HOST } = process.env;
 
 const url = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}/?retryWrites=true&w=majority`;
 
-const dbName: string = 'test';
+const dbName: string = 'game';
 
 const changeCollection = (collection: string): void => {
   collectionName = collection;
 }
 
-let collectionName: string = 'test';
+let collectionName: string = 'userProfiles';
 
 const getMongoInstance = async () => {
   const client = await MongoClient.connect(url);
