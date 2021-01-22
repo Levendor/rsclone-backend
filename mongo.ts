@@ -34,7 +34,7 @@ const listAll = async () => {
 const getById = async (id: string) => {
   const collection = await getCollection();
 
-  return await collection.find({ id });
+  return await collection.find({ id }).toArray();
 };
 
 const create = async (item) => {
